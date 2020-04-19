@@ -12,3 +12,5 @@ jobs:
           echo "########"
           ls -l
           make --version
+          tar --version
+          bsdtar --version
