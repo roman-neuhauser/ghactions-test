@@ -11,3 +11,4 @@ jobs:
           echo "PWD=$PWD"
           echo "########"
           ls -l
+          make --version
