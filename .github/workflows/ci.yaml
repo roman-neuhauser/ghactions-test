@@ -7,10 +7,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
-          echo hello world
-          echo "PWD=$PWD"
-          echo "########"
-          ls -l
+          apt-get update -qq
+          apt-get install -qq bsdtar
           make --version
           tar --version
           bsdtar --version
