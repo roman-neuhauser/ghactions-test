@@ -7,8 +7,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
-          sudo apt-get update -qq
-          sudo apt-get install -qq bsdtar
-          make --version
-          tar --version
-          bsdtar --version
+          pwd
+          echo GITHUB_WORKSPACE=$GITHUB_WORKSPACE
+          ls -la $GITHUB_WORKSPACE
