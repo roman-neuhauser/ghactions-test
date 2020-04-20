@@ -6,7 +6,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: |
-          pwd
-          echo GITHUB_WORKSPACE=$GITHUB_WORKSPACE
-          ls -la $GITHUB_WORKSPACE
+      - run: docker build -t buildenv -f .github/workflows/Dowckerfile
+      - run: docker run -i -v $PWD:/workdir buildenv make -C /workdir
