@@ -6,5 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: echo $PWD; pwd
       - run: docker build -t buildenv .github/workflows
       - run: docker run -i -v $PWD:/workdir buildenv make -C /workdir
