@@ -8,4 +8,4 @@ jobs:
       - uses: actions/checkout@v2
       - run: echo $PWD; pwd
       - run: docker build -t buildenv .github/workflows
-      - run: docker run -i -v $PWD:/workdir buildenv sh -c "pwd; ls -la"
+      - run: docker run -i -v $PWD:/workdir -w /workdir buildenv sh -c "pwd; ls -la"
