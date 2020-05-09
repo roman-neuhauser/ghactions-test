@@ -7,6 +7,7 @@ jobs:
     env:
       GIT_TRACE: /tmp/trace
       GIT_TRACE_CURL: /tmp/trace.curl
+      GIT_TRACE_CURL_NO_DATA: 1
     steps:
       - uses: actions/checkout@v2
       - run: echo $PWD; pwd
