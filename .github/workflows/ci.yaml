@@ -5,10 +5,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      GIT_TRACE: 1
+      GIT_TRACE: $HOME/trace
       GIT_TRACE_CURL: 1
     steps:
       - uses: actions/checkout@v2
       - run: echo $PWD; pwd
       - run: docker build -t buildenv .github/workflows
       - run: docker run -i -v $PWD:/workdir -w /workdir buildenv sh -c "pwd; ls -la"
+      - uses: actions/upload-artifact@v2
+        with:
+          name: trace.txt
+          path: $HOME/trace
