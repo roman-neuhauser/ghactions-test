@@ -5,7 +5,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      GIT_TRACE: $HOME/trace
+      GIT_TRACE: /tmp/trace
       GIT_TRACE_CURL: 1
     steps:
       - uses: actions/checkout@v2
@@ -15,4 +15,4 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: trace.txt
-          path: $HOME/trace
+          path: /tmp/trace
