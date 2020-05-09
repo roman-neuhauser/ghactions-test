@@ -4,6 +4,9 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      GIT_TRACE: 1
+      GIT_TRACE_CURL: 1
     steps:
       - uses: actions/checkout@v2
       - run: echo $PWD; pwd
