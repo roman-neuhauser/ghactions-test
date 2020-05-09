@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GIT_TRACE: /tmp/trace
-      GIT_TRACE_CURL: 1
+      GIT_TRACE_CURL: /tmp/trace.curl
     steps:
       - uses: actions/checkout@v2
       - run: echo $PWD; pwd
@@ -15,4 +15,4 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: trace.txt
-          path: /tmp/trace
+          path: /tmp/trace*
