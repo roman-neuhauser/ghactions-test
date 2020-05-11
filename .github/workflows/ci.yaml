@@ -11,7 +11,8 @@ jobs:
     steps:
       - run: git init .
       - run: git config protocol.version 2
-      - run: git config http.https://github.com/.extraHeader "AUTHORIZATION: basic $(echo "x-access-token:${{ secrets.GITHUB_TOKEN }}" | base64)"
+      - run: |
+          git config http.https://github.com/.extraHeader "AUTHORIZATION: basic $(echo "x-access-token:${{ secrets.GITHUB_TOKEN }}" | base64)"
       - run: git config --get http.https://github.com/.extraHeader
       - run: git remote add origin https://github.com/${{ github.repository }}
       - run: git fetch --verbose --no-tags --prune --depth=1 origin ${{ github.sha }}
