@@ -12,9 +12,7 @@ jobs:
       - uses: actions/checkout@v2
       - run: git config --get http.https://github.com/.extraHeader | base64 -w 0
       - run: |
-          git config credential.https://github.com.username || :
-      - run: |
-          git config credential.https://github.com/.username || :
+          git config -l --show-origin
       - run: rm -rf .git .github
       - run: git init .
       - run: git config protocol.version 2
