@@ -12,5 +12,5 @@ jobs:
       - uses: actions/checkout@v2
       - run: cat .git/config
       - run: echo RUNNER_TEMP=$RUNNER_TEMP
-      - run: find $RUNNER_TEMP -name .gitconfig -exec cat '{}' ';'
+      - run: find / -name .gitconfig # -exec cat '{}' ';'
       - run: cat ~/.gitconfig
