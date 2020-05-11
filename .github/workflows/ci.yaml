@@ -9,7 +9,12 @@ jobs:
       GIT_TRACE_CURL: /tmp/trace.curl
       GIT_TRACE_CURL_NO_DATA: 1
     steps:
-      - uses: actions/checkout@v2
+      - run: git init .
+      - run: git config protocol.version 2
+      - run: git config http.https://github.com/.extraHeader "AUTHORIZATION$COLON basic ${{ secrets.GITHUB_TOKEN }}"
+      - run: git config --get http.https://github.com/.extraHeader
+      - run: git remote add origin https://github.com/${{ github.repository }}
+      - run: git fetch --verbose --no-tags --prune --depth=1 origin ${{ github.sha }}
       - run: echo $PWD; pwd
       - run: docker build -t buildenv .github/workflows
       - run: docker run -i -v $PWD:/workdir -w /workdir buildenv sh -c "pwd; ls -la"
