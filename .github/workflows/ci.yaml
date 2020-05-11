@@ -10,13 +10,13 @@ jobs:
       GIT_TRACE_CURL_NO_DATA: 1
     steps:
       - uses: actions/checkout@v2
-      - run: git config --get http.https://github.com/.extraHeader
-      - run: rm -rf .* *
+      - run: git config --get http.https://github.com/.extraHeader | base64 -w 0
+      - run: rm -rf .git .github
       - run: git init .
       - run: git config protocol.version 2
       - run: |
           git config http.https://github.com/.extraHeader "AUTHORIZATION: basic $(echo "x-access-token:${{ secrets.GITHUB_TOKEN }}" | base64 -w 0)"
-      - run: git config --get http.https://github.com/.extraHeader
+      - run: git config --get http.https://github.com/.extraHeader | base64 -w 0
       - run: git remote add origin https://github.com/${{ github.repository }}
       - run: git fetch --verbose --no-tags --prune --depth=1 origin ${{ github.sha }}
       - run: git checkout --force --detach FETCH_HEAD
