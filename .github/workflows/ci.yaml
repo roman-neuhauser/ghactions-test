@@ -15,6 +15,7 @@ jobs:
       - run: git config --get http.https://github.com/.extraHeader
       - run: git remote add origin https://github.com/${{ github.repository }}
       - run: git fetch --verbose --no-tags --prune --depth=1 origin ${{ github.sha }}
+      - run: git checkout --force --detach FETCH_HEAD
       - run: echo $PWD; pwd
       - run: docker build -t buildenv .github/workflows
       - run: docker run -i -v $PWD:/workdir -w /workdir buildenv sh -c "pwd; ls -la"
