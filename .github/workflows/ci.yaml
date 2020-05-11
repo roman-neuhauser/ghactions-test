@@ -11,4 +11,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: cat .git/config
+      - run: cat $RUNNER_TEMP/*/.gitconfig
       - run: cat ~/.gitconfig
