@@ -5,8 +5,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      CRAP=shit
-      WTF=$CRAP
+      CRAP: shit
+      WTF: $CRAP
     steps:
       - echo WTF=$WTF
       - uses: actions/checkout@v2
