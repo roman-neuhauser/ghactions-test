@@ -2,6 +2,11 @@ name: ci
 on: [push, pull_request]
 
 jobs:
+  first:
+    runs-on: ubuntu-latest
+    steps:
+      - run: ls -la
+
   build:
     runs-on: ubuntu-latest
     env:
