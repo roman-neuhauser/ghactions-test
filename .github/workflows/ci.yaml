@@ -5,7 +5,7 @@ jobs:
   first:
     runs-on: ubuntu-latest
     env:
-      URL: ${{ github.repositoryUrl }}
+      URL: ${{ github.server_url }}/${{ github.repository }}
     steps:
       - run: echo $URL
       - run: pwd
