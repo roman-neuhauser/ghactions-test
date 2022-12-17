@@ -10,6 +10,8 @@ jobs:
       - run: echo $URL
       - run: pwd
       - run: ls -la
+      - run: |
+          git config -l --show-origin
       - run: echo $URL ... ${{ github.repositoryUrl }}
       - run: echo $GITHUB_SERVER_URL ... ${{ github.server_url }}
       - run: git clone --depth=1 $URL .
