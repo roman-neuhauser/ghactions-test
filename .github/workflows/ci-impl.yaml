@@ -5,9 +5,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
+      R: ${{ github.repository }}
       S: ${{ github.server_url }}
       T: ${{ secrets.GITHUB_TOKEN }}
-      R: roman-neuhauser/ghactions-test-private
     steps:
       - run: |
           git config --global http.$S.extraHeader \
