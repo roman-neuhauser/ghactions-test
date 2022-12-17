@@ -4,11 +4,15 @@ on: [push, pull_request]
 jobs:
   first:
     runs-on: ubuntu-latest
+    env:
+      URL: ${{ github.repositoryUrl }}
     steps:
+      - run: echo $URL
       - run: pwd
       - run: ls -la
+      - run: echo $URL ... ${{ github.repositoryUrl }}
       - run: echo $GITHUB_SERVER_URL ... ${{ github.server_url }}
-      - run: git clone --depth=1 https://github.com/roman-neuhauser/ghactions-test .
+      - run: git clone --depth=1 $URL .
       - run: ls -la
 
   build:
