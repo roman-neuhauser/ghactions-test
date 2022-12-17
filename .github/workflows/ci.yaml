@@ -5,4 +5,3 @@ on:
 jobs:
   build:
     uses: ./.github/workflows/ci-impl.yaml
-    secrets: inherit
