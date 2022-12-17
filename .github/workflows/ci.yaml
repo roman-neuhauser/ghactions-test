@@ -1,37 +1,8 @@
 name: ci
-on: [push, pull_request]
+on:
+  [push, pull_request]
 
 jobs:
-  first:
-    runs-on: ubuntu-latest
-    env:
-      URL: ${{ github.server_url }}/${{ github.repository }}
-    steps:
-      - run: echo $URL
-      - run: pwd
-      - run: ls -la
-      - run: |
-          git config -l --show-origin
-      - run: echo $URL ... ${{ github.repositoryUrl }}
-      - run: echo $GITHUB_SERVER_URL ... ${{ github.server_url }}
-      - run: git clone --depth=1 $URL .
-      - run: ls -la
-
   build:
-    runs-on: ubuntu-latest
-    env:
-      S: ${{ github.server_url }}
-      T: ${{ secrets.GITHUB_TOKEN }}
-      R: roman-neuhauser/ghactions-test-private
-    steps:
-      - run: |
-          git config -l --show-origin
-      - run: git config --get http.${S}/.extraHeader | base64 -w 0
-      - run: |
-          git config --global http.${S}.extraHeader \
-          "AUTHORIZATION: basic $(printf "x-access-token:%s" "${T}" | base64 -w 0)"
-      - run: git config --get http.${S}/.extraHeader | base64 -w 0
-      - run: git clone --depth=1 $S/$R .
-      - run: ls -la
-#     - run: docker build -t buildenv .github/workflows
-#     - run: docker run -i -v $PWD:/workdir -w /workdir buildenv sh -c "pwd; ls -la"
+    uses: ./.github/workflows/ci-impl.yaml
+    secrets: inherit
