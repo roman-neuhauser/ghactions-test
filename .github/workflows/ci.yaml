@@ -7,6 +7,7 @@ jobs:
     steps:
       - run: pwd
       - run: ls -la
+      - run: echo $GITHUB_SERVER_URL ... ${{ github.server_url }}
       - run: git clone --depth=1 https://github.com/roman-neuhauser/ghactions-test .
       - run: ls -la
 
