@@ -5,7 +5,9 @@ jobs:
   first:
     runs-on: ubuntu-latest
     steps:
+      - run: pwd
       - run: ls -la
+      - run: git clone --depth=1 https://github.com/roman-neuhauser/ghactions-test .
 
   build:
     runs-on: ubuntu-latest
