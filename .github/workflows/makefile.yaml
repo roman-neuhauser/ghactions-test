@@ -14,5 +14,7 @@ jobs:
           git config --global http.$S.extraHeader \
           "AUTHORIZATION: basic $(printf "x-access-token:%s" "$T" | base64 -w 0)"
       - run: git clone --depth=1 --branch=$B $S/$R .
+      - run: make
+      - run: make check
 #     - run: docker build -t buildenv .github/workflows
 #     - run: docker run -i -v $PWD:/workdir -w /workdir buildenv sh -c "pwd; ls -la"
