@@ -28,9 +28,8 @@ jobs:
           git config -l --show-origin
       - run: git config --get http.${S}/.extraHeader | base64 -w 0
       - run: |
-          git config http.${S}.extraHeader \
-          "AUTHORIZATION: basic \
-           $(printf "x-access-token:%s" "${T}" | base64 -w 0)"
+          git config --global http.${S}.extraHeader \
+          "AUTHORIZATION: basic $(printf "x-access-token:%s" "${T}" | base64 -w 0)"
       - run: git config --get http.${S}/.extraHeader | base64 -w 0
       - run: git clone --depth=1 $S/$R .
       - run: ls -la
