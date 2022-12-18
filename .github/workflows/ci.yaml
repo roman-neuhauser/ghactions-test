@@ -4,4 +4,4 @@ on:
 
 jobs:
   build:
-    uses: ./.github/workflows/makefile.yaml
+    uses: roman-neuhauser/.github/.github/workflows/makefile.yaml
