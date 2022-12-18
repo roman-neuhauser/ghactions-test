@@ -4,5 +4,5 @@ on:
 
 jobs:
   build:
-    uses: roman-neuhauser/.github/.github/workflows/makefile.yaml@master
+    uses: roman-neuhauser/.github/.github/workflows/make-all-check.yaml@master
     secrets: inherit
