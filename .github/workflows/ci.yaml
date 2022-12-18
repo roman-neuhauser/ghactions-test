@@ -5,3 +5,4 @@ on:
 jobs:
   build:
     uses: roman-neuhauser/.github/.github/workflows/makefile.yaml
+    secrets: inherit
